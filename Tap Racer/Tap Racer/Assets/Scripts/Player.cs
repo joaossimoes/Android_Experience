@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     Circuit circuit;
     Vector3 targetPos;
     int checkpointIndex;
+    float maxSpeed = 3f;
+    float currentSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButton(0))
+        {
+            Accelerate();
+        }
+        else
+        {
+            Break();
+        }
         Move();
+        Debug.Log(currentSpeed);
     }
 
     void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, 1f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, currentSpeed * Time.deltaTime);
         TargetPosition();
     }
 
@@ -40,6 +51,17 @@ public class Player : MonoBehaviour
             if (checkpointIndex > checkpoints.ToArray().Length - 1) {checkpointIndex = 0;}
             targetPos = checkpoints[checkpointIndex].transform.position;
         }
+    }
 
+    void Accelerate()
+    {
+        if (currentSpeed >= maxSpeed){return;}
+        currentSpeed += 0.01f;
+    }
+
+    void Break()
+    {
+        if (currentSpeed <= 0){return;}
+        currentSpeed -= 0.01f;
     }
 }
