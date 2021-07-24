@@ -21,4 +21,21 @@ public class Circuit : MonoBehaviour
     {
         return checkpoints;
     }
+
+    /// <summary>
+    /// Draws lines between checkpoints in Editor mode ONLY
+    /// </summary>
+    void OnDrawGizmos()
+    {
+        // If the number of checkpoints is less than 2, it's not even worth it
+        if (checkpoints.Count > 1)
+        {
+            Gizmos.color = Color.yellow;
+            for (int i = 0; i < checkpoints.Count; i++)
+            {
+                // Draws line between current checkpoint and the next
+                Gizmos.DrawLine(checkpoints[i].transform.position, checkpoints[i + 1 == checkpoints.Count ? 0 : i + 1].transform.position);
+            }
+        }
+    }
 }
