@@ -5,6 +5,7 @@ using UnityEngine;
 public class Circuit : MonoBehaviour
 {
     public List<GameObject> checkpoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +23,7 @@ public class Circuit : MonoBehaviour
         return checkpoints;
     }
 
-    /// <summary>
-    /// Draws lines between checkpoints in Editor mode ONLY
-    /// </summary>
+    // Draws lines between checkpoints in Editor mode ONLY
     void OnDrawGizmos()
     {
         // If the number of checkpoints is less than 2, it's not even worth it
