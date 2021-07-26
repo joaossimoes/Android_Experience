@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec05df58fde8bce4cb1706b054ca4360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  car: {fileID: 11400000, guid: 37b30909c3265a6488e22f0a2f9270fb, type: 2}
 --- !u!4 &1395531277
 Transform:
   m_ObjectHideFlags: 0
@@ -537,9 +538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe44134f187e14343ba0276d19791c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointCount: 13
-  length: 4
-  angle: 2.6
+  pointCount: 14
+  length: 6.2
+  angle: 2.8
   pointRadius: 0.09
   spiral: 0
 --- !u!4 &1964264937

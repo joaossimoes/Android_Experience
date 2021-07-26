@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public CarValues car;
     List<GameObject> checkpoints;
     Circuit circuit;
     Vector3 targetPos;
     int checkpointIndex;
-    float maxSpeed = 3f;
+    float maxSpeed; //before it was 3f
     float currentSpeed;
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         transform.position = checkpoints[0].transform.position;
         targetPos = checkpoints[checkpointIndex + 1].transform.position;
         checkpointIndex++;
+        maxSpeed = car.maxSpeed;
     }
 
     // Update is called once per frame
@@ -56,12 +58,12 @@ public class Player : MonoBehaviour
     void Accelerate()
     {
         if (currentSpeed >= maxSpeed){return;}
-        currentSpeed += 0.01f;
+        currentSpeed += car.Acceleration;      //before it was 0.01f
     }
 
     void Break()
     {
-        if (currentSpeed <= 0){return;}
-        currentSpeed -= 0.01f;
+        if (currentSpeed <= 0){currentSpeed = 0; return;}
+        currentSpeed -= car.BrakePower;                 //before it was 0.01f
     }
 }
